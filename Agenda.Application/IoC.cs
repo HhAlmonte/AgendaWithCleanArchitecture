@@ -12,7 +12,6 @@ namespace Agenda.Application
             services.AddTransient<IUserHandler, UserHandler>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
             return services;
         }
     }

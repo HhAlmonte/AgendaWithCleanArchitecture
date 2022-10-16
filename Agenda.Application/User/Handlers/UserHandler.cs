@@ -15,7 +15,7 @@ namespace Agenda.Application.User.Handlers
     }
 
     public class UserHandler : BaseCrudHandler<UserPasswordDto, Domain.Entities.User>, IUserHandler
-    {
+    {   
         public UserHandler(IUserService userService, IMapper mapper) : base(userService, mapper)
         {
         }

@@ -1,3 +1,8 @@
+using Agenda.Application;
+using Agenda.Infrastructure;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +11,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.TryAddSingleton<ISystemClock, SystemClock>();
+
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddAplication();
 
 var app = builder.Build();
 

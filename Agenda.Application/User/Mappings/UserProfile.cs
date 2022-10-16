@@ -9,11 +9,13 @@ namespace Agenda.Application.User.Mappings
         public UserProfile()
         {
             CreateMap<UserDto, Domain.Entities.User>().ReverseMap();
+            
             CreateMap<UserPasswordDto, Domain.Entities.User>().ReverseMap();
-            CreateMap<UserDto, Person>().ForMember(dest => dest.FullName,
+            
+            CreateMap<UserDto, Domain.Entities.Person>().ForMember(dest => dest.FullName,
                 op => op.MapFrom(source => $"{source.FirstName} {source.LastName}"));
 
-            CreateMap<Person, UserDto>();
+            CreateMap<Domain.Entities.Person, UserDto>();
         }
     }
 }
