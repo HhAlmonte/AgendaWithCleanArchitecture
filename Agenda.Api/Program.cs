@@ -17,9 +17,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.TryAddSingleton<ISystemClock, SystemClock>();
 
-builder.Services.AddInfrastructure(builder.Configuration);
-
 builder.Services.AddApplication();
+
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 

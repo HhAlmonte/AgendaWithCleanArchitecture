@@ -1,5 +1,6 @@
 ﻿using Agenda.Application.Generic.Handlers;
 using Agenda.Application.Generic.Interfaces;
+using Agenda.Application.Interfaces;
 using Agenda.Application.Person.Dtos;
 using AutoMapper;
 
@@ -15,7 +16,7 @@ namespace Agenda.Application.Person.Handlers
 
     public class PersonHandler : BaseCrudHandler<PersonDto, Domain.Entities.Person>, IPersonHandler
     {
-        public PersonHandler(IBaseCrudService<Domain.Entities.Person> crudService, IMapper mapper) : base(crudService, mapper)
+        public PersonHandler(IPersonService crudService, IMapper mapper) : base(crudService, mapper)
         {
         }
 

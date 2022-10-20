@@ -20,10 +20,6 @@ namespace Agenda.Infrastructure
             services.AddDbContext<AgendaDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            using var serviceScope = services.BuildServiceProvider().CreateScope();
-            var context = serviceScope.ServiceProvider.GetService<AgendaDbContext>();
-            context.Database.Migrate();
-
             return services;
         }
     }

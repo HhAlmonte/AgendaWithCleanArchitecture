@@ -17,7 +17,10 @@ namespace Agenda.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var entityToReturn = _userHandler.GetById(id);
+            var entityToReturn = await _userHandler.GetById(id);
+
+            if (entityToReturn == null)
+                return NotFound();
 
             return Ok(entityToReturn);
         }
