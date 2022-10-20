@@ -8,7 +8,7 @@ namespace Agenda.Application
 {
     public static class IoC
     {
-        public static IServiceCollection AddAplication(this IServiceCollection services)
+        public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddTransient<IUserHandler, UserHandler>();
             

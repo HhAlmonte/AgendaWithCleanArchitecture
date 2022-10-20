@@ -3,7 +3,7 @@ using Agenda.Domain.Entities;
 
 namespace Agenda.Application.Interfaces
 {
-    public interface IPersonService : IBaseCrudService<Person>
+    public interface IPersonService : IBaseCrudService<Domain.Entities.Person>
     {
     }
 }
