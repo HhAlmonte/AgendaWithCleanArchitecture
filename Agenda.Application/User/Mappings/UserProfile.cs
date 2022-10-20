@@ -10,11 +10,15 @@ namespace Agenda.Application.User.Mappings
         {
             CreateMap<UserDto, Domain.Entities.User>().ReverseMap();
             
-            CreateMap<UserPasswordDto, Domain.Entities.User>().ReverseMap();
-            
-            CreateMap<UserDto, Domain.Entities.Person>().ForMember(dest => dest.FullName,
-                op => op.MapFrom(source => $"{source.FirstName} {source.LastName}"));
+            CreateMap<UserPasswordDto, Domain.Entities.User>()
+                .ForPath(dest => dest.Person.Email, op =>
+                op.MapFrom(source => source.Email))
+                .ForPath(dest => dest.Person.FullName, op =>
+                op.MapFrom(source => $"{source.FirstName} {source.LastName}"))
+                .ReverseMap();
 
+            CreateMap<UserDto, Domain.Entities.Person>();
+            
             CreateMap<Domain.Entities.Person, UserDto>();
         }
     }

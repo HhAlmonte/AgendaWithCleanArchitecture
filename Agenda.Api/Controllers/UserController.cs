@@ -1,5 +1,5 @@
-﻿using Agenda.Application.User.Handlers;
-using Microsoft.AspNetCore.Http;
+﻿using Agenda.Application.User.Dtos;
+using Agenda.Application.User.Handlers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Agenda.Api.Controllers
@@ -15,7 +15,7 @@ namespace Agenda.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> Get([FromRoute]int id)
         {
             var entityToReturn = await _userHandler.GetById(id);
 
@@ -23,6 +23,22 @@ namespace Agenda.Api.Controllers
                 return NotFound();
 
             return Ok(entityToReturn);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody]UserPasswordDto userDto)
+        {
+            try
+            {
+                var entityToCreate = await _userHandler.Create(userDto);
+                return Ok(entityToCreate);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+                throw;
+            }
+            
         }
     }
 }
